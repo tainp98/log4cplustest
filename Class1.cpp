@@ -1,7 +1,6 @@
 #include "Class1.h"
 Class1::Class1()
 {
-    initLog();
 
 }
 void Class1::initLog(){
@@ -16,31 +15,17 @@ void Class1::initLog(){
     logger.addAppender(console);
 }
 void Class1::run(){
-    std::cout << "running Class1 .... \n";
-    LOG4CPLUS_INFO(logger, LOG4CPLUS_TEXT("running info"));
-    Logger log2 = Logger::getInstance("test2");
-    log2.setLogLevel(log4cplus::TRACE_LOG_LEVEL);
-    //Logger logger = Logger::getInstance(LOG4CPLUS_TEXT("test1"));
+    Log logger("Class2", Log::LogLevel::INFO);
+    Logger mylog = logger.getLogger();
 
-    Logger log1 = Logger::getInstance("test1");
-//    log4cplus::SharedAppenderPtr console =  log1.getAppender(LOG4CPLUS_TEXT("STDOUT"));
-//    log1.addAppender(console);
+    LOG4CPLUS_TRACE(mylog, LOG4CPLUS_TEXT("printMessages()"));
+    LOG4CPLUS_DEBUG(mylog, LOG4CPLUS_TEXT("This is a DEBUG message"));
+    LOG4CPLUS_INFO(mylog, LOG4CPLUS_TEXT("This is a INFO message"));
+    LOG4CPLUS_WARN(mylog, LOG4CPLUS_TEXT("This is a WARN message"));
+    LOG4CPLUS_ERROR(mylog, LOG4CPLUS_TEXT("This is a ERROR message"));
+    LOG4CPLUS_FATAL(mylog, LOG4CPLUS_TEXT("This is a FATAL message"));
 
-    LOG4CPLUS_TRACE(log1, LOG4CPLUS_TEXT("printMessages()"));
-    LOG4CPLUS_DEBUG(log1, LOG4CPLUS_TEXT("This is a DEBUG message"));
-    LOG4CPLUS_INFO(log1, LOG4CPLUS_TEXT("This is a INFO message"));
-    LOG4CPLUS_WARN(log1, LOG4CPLUS_TEXT("This is a WARN message"));
-    LOG4CPLUS_ERROR(log1, LOG4CPLUS_TEXT("This is a ERROR message"));
-    LOG4CPLUS_FATAL(log1, LOG4CPLUS_TEXT("This is a FATAL message"));
+    mylog.shutdown();
 
-
-
-
-    LOG4CPLUS_TRACE(log2, LOG4CPLUS_TEXT("printMessages()"));
-    LOG4CPLUS_DEBUG(log2, LOG4CPLUS_TEXT("This is a DEBUG message"));
-    LOG4CPLUS_INFO(log2, LOG4CPLUS_TEXT("This is a INFO message"));
-    LOG4CPLUS_WARN(log2, LOG4CPLUS_TEXT("This is a WARN message"));
-    LOG4CPLUS_ERROR(log2, LOG4CPLUS_TEXT("This is a ERROR message"));
-    LOG4CPLUS_FATAL(log2, LOG4CPLUS_TEXT("This is a FATAL message"));
 
 }

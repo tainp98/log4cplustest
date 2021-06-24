@@ -10,6 +10,8 @@
 #include <tstring.h>
 #include <iostream>
 
+#include "Log.h"
+
 using namespace log4cplus;
 
 class Class1

@@ -4,7 +4,8 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    Class1.cpp
+    Class1.cpp \
+    Log.cpp
 
 
 INCLUDEPATH += /usr/local/include/log4cplus
@@ -12,4 +13,8 @@ INCLUDEPATH += /usr/local/include/log4cplus
 LIBS += `pkg-config --libs log4cplus`
 
 HEADERS += \
-    Class1.h
+    Class1.h \
+    Log.h
+
+DESTDIR = $$system(pwd)/build
+OBJECTS_DIR = $$DESTDIR
